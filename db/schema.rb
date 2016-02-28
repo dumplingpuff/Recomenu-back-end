@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160225201936) do
   create_table "entries", force: :cascade do |t|
     t.string   "restaurant"
     t.string   "location"
+    t.string   "time"
     t.string   "dish"
     t.text     "content"
     t.integer  "rating"
@@ -29,7 +30,8 @@ ActiveRecord::Schema.define(version: 20160225201936) do
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "token",           null: false
-    t.string   "password_digest", null: false
+    t.string   "password_digest"
+    t.boolean  "admin"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

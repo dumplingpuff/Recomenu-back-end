@@ -3,6 +3,7 @@ class CreateEntries < ActiveRecord::Migration
     create_table :entries do |t|
       t.string :restaurant
       t.string :location
+      t.string :time
       t.string :dish
       t.text :content
       t.integer :rating
