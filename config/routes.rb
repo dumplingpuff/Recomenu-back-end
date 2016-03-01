@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  resources :comments, except: [:new, :edit]
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
   delete '/sign-out/:id' => 'users#signout'
   patch '/change-password/:id' => 'users#changepw'
   resources :users, only: [:index, :show]
   resources :entries
+  resources :comments
+  resources :suggestions
 
-  # get '/entries' => 'users#index'
-  #  except: [:new, :edit]
+
 
 end
