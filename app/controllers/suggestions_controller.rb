@@ -4,7 +4,7 @@ class SuggestionsController < OpenReadController
   skip_before_action :authenticate, only: [:index, :show]
 
   def index
-    render json: Suggestion.all
+    render json: Suggestion.order(votes: :desc)
   end
 
   def show
