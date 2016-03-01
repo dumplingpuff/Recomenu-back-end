@@ -25,10 +25,10 @@ class EntriesController < OpenReadController
 
   def update
 
-    if current_user['id'] == @entry.user_id and currrent_user['admin']
+    if @entry.update(entry_params) and current_user['id'] == @entry.user_id and current_user['admin']
       render json: @entry, status: :ok
     else
-      render json: @entry.errors, status: :unprocessable_entity
+      render json: @entry.errors, status: :unauthorized
     end
   end
 
@@ -37,7 +37,7 @@ class EntriesController < OpenReadController
       @entry.destroy
       head :no_content
     else
-      render json: @entry.errors, status: :unprocessable_entity
+      render json: @entry.errors, status: :unauthorized
     end
   end
 
