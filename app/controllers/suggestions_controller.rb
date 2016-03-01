@@ -1,7 +1,7 @@
-class SuggestionsController < ApplicationController
+class SuggestionsController < OpenReadController
   before_filter :set_suggestion, only: [:show, :update, :destroy]
   before_filter :suggestion_params, only: [:create]
-  skip_before_action :authenticate
+  skip_before_action :authenticate, only: [:index, :show]
 
   def index
     render json: Suggestion.all
@@ -13,7 +13,7 @@ class SuggestionsController < ApplicationController
 
   def create
 
-    @suggestion = current_user.entries.new(suggestion_params)
+    @suggestion = Suggestion.new(suggestion_params)
 
     if @suggestion.save
       render json: @suggestion, status: :created
@@ -32,7 +32,7 @@ class SuggestionsController < ApplicationController
   end
 
   def destroy
-    if current_user['id'] == @suggestion.user_id
+    if current_user['admin'] == true
       @suggestion.destroy
       head :no_content
     else

@@ -1,6 +1,6 @@
 curl --include --request POST http://localhost:3000/entries \
   --header "Content-Type: application/json" \
-  --header "Authorization: Token token=6f004c274a9a8aa3800ce876d71a7dfd" \
+  --header "Authorization: Token token=f474e7251770790b254dd7e8d2e0e38c" \
   --data '{
     "entry": {
       "restaurant": "Boogers"
