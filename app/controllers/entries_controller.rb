@@ -13,7 +13,6 @@ class EntriesController < OpenReadController
   end
 
   def create
-
     @entry = current_user.entries.new(entry_params)
 
     if @entry.save
